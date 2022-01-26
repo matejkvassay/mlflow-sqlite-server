@@ -13,13 +13,13 @@ files into a local directory.
 
 ### How does it persist data
 Data is stored into 1 configurable "mlruns" directory. MLFlow will write to this folder:
-1. SQLite database for backend store (metrics, parameters, etc...)
+1. SQLite database for backend data storage (small data - metrics, parameters, etc...)
 2. Directory for artifact store (larger files - datasets, models, etc...).
 
-By default backend is stored in SQLite file ```mlflow.db``` and artifacts in 
+By default backend data is stored in SQLite file ```mlflow.db``` and artifacts in 
 folder called ```artifacts```.
 
-See [advanced configuration guide](#advconf) or Dockerfile to configure different backend & artifact storage options.
+See [advanced configuration guide](#advconf) or Dockerfile to configure different backend data & artifact storage options.
 
 ## License
 Apache License 2.0, feel free to do anything with it!
@@ -35,7 +35,7 @@ docker build -f Dockerfile . -t mlflow-sqlite-server:latest
 ```
 
 #### 2. Run Docker image
-Map port 5000 and provide mount a local dir where data will be persisted.
+Map port 5000 and mount a local directory where data will be persisted.
 ```
 docker run -p 5000:5000 -v <YOUR LOCAL DIR>:/data mlflow-sqlite-server:latest
 ```
@@ -43,7 +43,7 @@ docker run -p 5000:5000 -v <YOUR LOCAL DIR>:/data mlflow-sqlite-server:latest
 http://localhost:5000
 ## <a name="advconf"></a>Advanced configuration
 Configuration can be done via ENV variables passed to docker image at run time
-using ```-e``` option of ```docker run```. See Dockerfile for details on 
+using ```-e``` option of ```docker run``` command. See Dockerfile for details on 
 what variables are used and how.
 
 ### Available ENV Variables 
